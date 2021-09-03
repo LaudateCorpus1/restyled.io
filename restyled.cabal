@@ -3,8 +3,6 @@ cabal-version: 1.12
 -- This file has been generated from package.yaml by hpack version 0.34.4.
 --
 -- see: https://github.com/sol/hpack
---
--- hash: ba26595ef44d0ce9aa35b4fb879dc7fd27d0ff1491564efee5c04a6cb4261f7f
 
 name:           restyled
 version:        0.1.1.0
@@ -80,6 +78,7 @@ library
       Restyled.Handlers.Thanks
       Restyled.Handlers.Webhooks
       Restyled.JobLogLine
+      Restyled.JobOutput
       Restyled.Marketplace
       Restyled.Metrics
       Restyled.Models
@@ -100,7 +99,6 @@ library
       Restyled.ServerUnavailable
       Restyled.Settings
       Restyled.SqlError
-      Restyled.StreamJobLogLines
       Restyled.Time
       Restyled.TimeRange
       Restyled.WebSockets
@@ -170,6 +168,7 @@ library
     , envparse
     , errors
     , esqueleto
+    , exceptions
     , extra
     , fast-logger
     , file-embed
@@ -209,6 +208,7 @@ library
     , text
     , time
     , transformers
+    , unliftio
     , unordered-containers
     , uri-encode
     , uuid
