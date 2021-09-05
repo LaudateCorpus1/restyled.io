@@ -9,7 +9,7 @@ if (typeof Output === "undefined") {
     this.logsSeen = false;
   }
 
-  Output.prototype.append = function(html) {
+  Output.prototype.append = (html) => {
     var loaded = this.elem.getAttribute("data-stream-loaded");
 
     if (loaded === "false" && html !== "") {
@@ -24,34 +24,34 @@ if (typeof Output === "undefined") {
     }
   };
 
-  Output.prototype.connect = function() {
-    var self = this,
+  Output.prototype.connect = () => {
+    var this = this,
       socket = new WebSocket(this.streamUrl);
 
-    socket.onerror = function(data) {
+    socket.onerror = (data) => {
       console.log("websockets error", data);
     };
 
-    socket.onmessage = function(data) {
-      self.append(data.data);
+    socket.onmessage = (data) => {
+      this.append(data.data);
       socket.send("acknowledged");
 
       if (data.data !== "") {
-        self.logsSeen = true;
+        this.logsSeen = true;
       }
     };
 
-    socket.onclose = function(event) {
-      console.log("websocket closed", event, self.logsSeen);
+    socket.onclose = (event) => {
+      console.log("websocket closed", event, this.logsSeen);
 
-      if (!self.logsSeen) {
-        self.append("The log for this Job was empty or has expired");
+      if (!this.logsSeen) {
+        this.append("The log for this Job was empty or has expired");
       }
     };
   };
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", () => {
   var cards = document.getElementsByClassName("card")
   var singleCard = cards.length === 1;
   var stream = document.getElementById("#{rawJS streamElementId}");
