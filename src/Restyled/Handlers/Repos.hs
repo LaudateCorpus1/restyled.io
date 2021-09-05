@@ -3,8 +3,6 @@
 module Restyled.Handlers.Repos
     ( getRepoR
     , putRepoR
-    , getRepoPullR
-    , getRepoPullJobsR
     , getRepoJobsR
     , getRepoJobR
     , getRepoJobLogLinesR
@@ -41,20 +39,6 @@ putRepoR owner name = do
         assertOwnerName owner body *> assertRepoName name body
         upsertRepo body
     either (sendStatusJSON status400) (sendStatusJSON status200) result
-
-getRepoPullR :: OwnerName -> RepoName -> PullRequestNum -> Handler Html
-getRepoPullR = getRepoPullJobsR
-
-getRepoPullJobsR :: OwnerName -> RepoName -> PullRequestNum -> Handler Html
-getRepoPullJobsR owner name num = do
-    pages <- runDB $ selectPaginated
-        5
-        [JobOwner ==. owner, JobRepo ==. name, JobPullRequest ==. num]
-        [Desc JobCreatedAt]
-
-    defaultLayout $ do
-        setTitle $ toHtml $ repoPullPath owner name num <> " jobs"
-        $(widgetFile "jobs")
 
 getRepoJobsR :: OwnerName -> RepoName -> Handler Html
 getRepoJobsR owner name = do

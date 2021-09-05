@@ -74,6 +74,8 @@ library
       Restyled.Handlers.PrivacyPolicy
       Restyled.Handlers.Profile
       Restyled.Handlers.Repos
+      Restyled.Handlers.Repos.Pulls
+      Restyled.Handlers.Repos.Pulls.Jobs
       Restyled.Handlers.System.Metrics
       Restyled.Handlers.Thanks
       Restyled.Handlers.Webhooks
