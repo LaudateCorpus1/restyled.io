@@ -1,10 +1,6 @@
-{-# LANGUAGE TemplateHaskell #-}
-
 module Restyled.Handlers.Repos
     ( getRepoR
     , putRepoR
-    , getRepoJobsR
-    , getRepoJobR
     , getRepoJobLogLinesR
     ) where
 
@@ -16,9 +12,9 @@ import qualified Data.Text as T
 import qualified Data.Text.Lazy as TL
 import Restyled.Api.UpsertRepo
 import Restyled.Foundation
+import Restyled.Handlers.Repos.Jobs
 import Restyled.JobOutput
 import Restyled.Models hiding (upsertRepo)
-import Restyled.Settings
 import Restyled.WebSockets
 import Restyled.Widgets.Job
 import Restyled.Widgets.JobLogLine
@@ -40,24 +36,6 @@ putRepoR owner name = do
         upsertRepo body
     either (sendStatusJSON status400) (sendStatusJSON status200) result
 
-getRepoJobsR :: OwnerName -> RepoName -> Handler Html
-getRepoJobsR owner name = do
-    pages <- runDB $ selectPaginated
-        5
-        [JobOwner ==. owner, JobRepo ==. name]
-        [Desc JobCreatedAt]
-
-    defaultLayout $ do
-        setTitle $ toHtml $ repoPath owner name <> " jobs"
-        $(widgetFile "jobs")
-
-getRepoJobR :: OwnerName -> RepoName -> JobId -> Handler Html
-getRepoJobR owner name jobId = do
-    job <- runDB $ getEntity404 jobId
-
-    defaultLayout $ do
-        setTitle $ toHtml $ repoPath owner name <> " #" <> toPathPiece jobId
-        $(widgetFile "job")
 
 getRepoJobLogLinesR :: OwnerName -> RepoName -> JobId -> Handler Text
 getRepoJobLogLinesR _owner _name jobId = do
