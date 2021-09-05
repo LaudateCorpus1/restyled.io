@@ -75,6 +75,7 @@ library
       Restyled.Handlers.Profile
       Restyled.Handlers.Repos
       Restyled.Handlers.Repos.Jobs
+      Restyled.Handlers.Repos.Jobs.LogLines
       Restyled.Handlers.Repos.Pulls
       Restyled.Handlers.Repos.Pulls.Jobs
       Restyled.Handlers.System.Metrics
