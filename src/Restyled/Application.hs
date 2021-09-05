@@ -28,7 +28,7 @@ import Restyled.Handlers.Admin.Marketplace.Plans
 import Restyled.Handlers.Admin.Offers
 import Restyled.Handlers.Admin.Repos
 import Restyled.Handlers.Admin.Token
-import Restyled.Handlers.Common
+import Restyled.Handlers.Favicon
 import Restyled.Handlers.GitHubStudents
 import Restyled.Handlers.Home
 import Restyled.Handlers.Jobs
@@ -41,6 +41,8 @@ import Restyled.Handlers.Repos.Jobs
 import Restyled.Handlers.Repos.Jobs.LogLines
 import Restyled.Handlers.Repos.Pulls
 import Restyled.Handlers.Repos.Pulls.Jobs
+import Restyled.Handlers.Revision
+import Restyled.Handlers.Robots
 import Restyled.Handlers.System.Metrics
 import Restyled.Handlers.Thanks
 import Restyled.Handlers.Webhooks

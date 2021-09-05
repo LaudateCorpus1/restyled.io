@@ -65,7 +65,7 @@ library
       Restyled.Handlers.Admin.Offers
       Restyled.Handlers.Admin.Repos
       Restyled.Handlers.Admin.Token
-      Restyled.Handlers.Common
+      Restyled.Handlers.Favicon
       Restyled.Handlers.GitHubStudents
       Restyled.Handlers.Home
       Restyled.Handlers.Jobs
@@ -78,6 +78,8 @@ library
       Restyled.Handlers.Repos.Jobs.LogLines
       Restyled.Handlers.Repos.Pulls
       Restyled.Handlers.Repos.Pulls.Jobs
+      Restyled.Handlers.Revision
+      Restyled.Handlers.Robots
       Restyled.Handlers.System.Metrics
       Restyled.Handlers.Thanks
       Restyled.Handlers.Webhooks
